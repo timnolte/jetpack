@@ -1,0 +1,87 @@
+.widget_gdpr_ads_compliance_widget.widget {
+	border: none;
+	bottom: 1em;
+	display: none;
+	left: 1em;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	right: 1em;
+	width: auto;
+	z-index: 50001;
+}
+
+#gdpr-ads-compliance {
+	background-color: #fff;
+	border: 1px solid #dedede;
+	color: #2e4467;
+	font-size: 12px;
+	line-height: 1.5;
+	overflow: hidden;
+	padding: 6px 6px 6px 15px;
+	position: relative;
+}
+
+#gdpr-ads-compliance a,
+#gdpr-ads-compliance a:active,
+#gdpr-ads-compliance a:visited {
+	color: inherit;
+	cursor: inherit;
+	text-decoration: underline;
+}
+
+#gdpr-ads-compliance a:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#gdpr-ads-compliance.negative {
+	background-color: #000;
+	border: none;
+	color: #fff;
+}
+
+/**
+ * Using a highly-specific rule to make sure that all button styles
+ * will be reset
+ */
+#gdpr-ads-compliance input,
+#gdpr-ads-compliance input:hover,
+#gdpr-ads-compliance input:focus {
+	background: #f3f3f3;
+	border: 1px solid #dedede;
+	border-radius: 4px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	color: #2e4453;
+	cursor: pointer;
+	display: inline;
+	float: right;
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: inherit;
+	line-height: inherit;
+	margin: 0 0 0 5%;
+	padding: 8px 12px;
+	position: static;
+	text-transform: none;
+}
+
+#gdpr-ads-compliance.negative input,
+#gdpr-ads-compliance.negative input:hover,
+#gdpr-ads-compliance.negative input:focus {
+	background: #282828;
+	border-color: #535353;
+	color: #fff;
+}
+
+@media ( max-width: 600px ) {
+	#gdpr-ads-compliance {
+		padding-bottom: 55px;
+	}
+	#gdpr-ads-compliance input.accept {
+		bottom: 8px;
+		position: absolute;
+		right: 8px;
+	}
+}
