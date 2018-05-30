@@ -44,6 +44,18 @@ class Jetpack_Constants {
 	}
 
 	/**
+	 * Checks if a "constant" has not been set in Jetpack_Constants
+	 * or if it has the value of false
+	 *
+	 * @param $name string The name of the constant
+	 *
+	 * @return bool
+	 */
+	public static function is_falsey( $name ) {
+		return ! self::is_true();
+	}
+
+	/**
 	 * Attempts to retrieve the "constant" from Jetpack_Constants, and if it hasn't been set,
 	 * then attempts to get the constant with the constant() function.
 	 *
