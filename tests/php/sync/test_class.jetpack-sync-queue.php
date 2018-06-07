@@ -51,16 +51,6 @@ class WP_Test_Jetpack_Sync_Queue extends WP_UnitTestCase {
 		$this->assertTrue( $this->queue->has_any_items() );
 	}
 
-	function test_queue_lag() {
-		// lag is the difference in time between the age of the oldest item and the current time
-		$this->queue->reset();
-		$this->queue->add( 'foo' );
-		sleep( 3 );
-		$this->queue->add( 'bar' );
-		sleep( 3 );
-		$this->assertEquals( 6, intval( $this->queue->lag() ) );
-	}
-
 	function test_checkout_queue_items() {
 		$this->queue->add( 'foo' );
 
