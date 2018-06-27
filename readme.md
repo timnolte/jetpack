@@ -55,7 +55,7 @@ Jetpack is licensed under [GNU General Public License v2 (or later)](./LICENSE.t
 
 ## Team
 
-The Jetpack Pit Crew is comprised of @briancolinger, @dereksmart, @eliorivero, @georgestephanis, @oskosk, @rcoll, @samhotchkiss, @singerb, @thingalon, and @zinigor.
+The Jetpack Pit Crew is comprised of @briancolinger, @dereksmart, @eliorivero, @georgestephanis, @oskosk, @rcoll, @singerb, @thingalon, and @zinigor.
 
 Contributions have been and continue to be made by dozens of other Automatticians, like:
 
