@@ -1,7 +1,7 @@
 === Jetpack by WordPress.com ===
 Contributors: automattic, adamkheckler, aduth, akirk, allendav, alternatekev, andy, annezazu, apeatling, azaozz, batmoo, barry, beaulebens, blobaugh, cainm, cena, cfinke, chaselivingston, chellycat, clickysteve, csonnek, danielbachhuber, davoraltman, daniloercoli, designsimply, dllh, drawmyface, dsmart, dzver, ebinnion, eliorivero, enej, eoigal, erania-pinnera, ethitter, gcorne, georgestephanis, gibrown, goldsounds, hew, hugobaeta, hypertextranch, iammattthomas, iandunn, jblz, jasmussen, jeffgolenski, jeherve, jenhooks, jenia, jessefriedman, jgs, jkudish, jmdodd, joanrho, johnjamesjacoby, jshreve, keoshi, koke, kraftbj, lancewillett, lschuyler, macmanx, martinremy, matt, matveb, mattwiebe, maverick3x6, mcsf, mdawaffe, MichaelArestad, migueluy, mikeyarce, mkaz, nancythanki, nickmomrik, obenland, oskosk, pento, professor44, rachelsquirrel, rdcoll, ryancowles, richardmuscat, richardmtl, roccotripaldi, samhotchkiss, scarstocea, sdquirk, stephdau, tmoorewp, tyxla, Viper007Bond, westi, yoavf, zinigor
 Tags: Jetpack, WordPress.com, backup, security, related posts, CDN, speed, anti-spam, social sharing, SEO, video, stats
-Stable tag: 6.3.3
+Stable tag: 6.4
 Requires at least: 4.7
 Tested up to: 4.9
 
@@ -98,36 +98,15 @@ There are opportunities for developers at all levels to contribute. [Learn more 
 
 == Changelog ==
 
-= 6.4 =
+= 6.5 =
 
-* Release date: August 7, 2018
-* Release post: https://wp.me/p1moTy-9md
+* Release date:
+* Release post:
 
 **Enhancements**
 
-* Connection: Updated connect splash screen with new content.
-* Sharing: Sharing section in wp-admin will now redirect to Calypso instead.
-* Docs: Added documentation for retrieving provision status of a site.
-* Shortcodes: Added oEmbed support for flat.io.
-* Widgets: Added `jetpack_top_posts_widget_layout` filter that allows you to create a custom display layout for the Top posts widget.
-* Privacy tools: Identify the data export/erasure callbacks for Feedback posts using associative keys, to better match the convention in Core.
-* Privacy tools: Added the `grunion_contact_form_delete_feedback_post` filter hook to allow specific Feedback posts to be bypassed during data erasure requests, similar to the `wp_anonymize_comment` filter in Core.
-* Contact Fork: Disabled random table optimizations on core tables.
+* Docs: Added doc to describe fallback for when DNS does not resolve for a given URL.
 
 **Improved compatibility**
 
-* AMP: Improved AMP compatibility for Comments iframe.
-* General: The SEO Framework is no longer a conflicting Open Graph plugin and is now better compatible with Jetpack.
-
 **Bug fixes**
-
-* Shortcodes: Removed extra black bars from YouTube embeds as controls are inside the container now.
-* Simple Payments: Fixed the custom post type bug that affected Simple Payments widget for 2 year subscriptions.
-* Simple Payments: Fixed site failure which happens on Multisite installation with Simple Payments widget.
-* Simple Payments: Fixed syntax and misc compatibility issues with Simple Payments widget on PHP 5.2.
-* Simple Payments: Added warning for admin users if Simple Payments is not enabled but there are products published on pages/posts as a widget.
-* Lazy Images: Fixed an issue with images not loading while updating quantity in WooCommerce shopping cart.
-* Lazy Images: Fixed centered images that do not crop properly when no JavaScript is enabled.
-* General: Fixed auto scrolling to top when following the Quick Tour buttons.
-* General: Removed ability to set custom name for Site Identity section.
-* General: Added advanced control capabilities to image extraction from posts.
