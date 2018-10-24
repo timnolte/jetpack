@@ -2,10 +2,15 @@
 
 The javascript and CSS components of this plugin's admin interface need to be built in order to get the runtime bundle (`_inc/build/admin.js`)
 
-**Recommended Environment**
+## Before moving forward
+
+In most cases you want to have accessible an WordPress installation for Jetpack development. We suggest to use a `Docker` container which we provide. Follow [this guide](../docker/README.md#to-get-started) to configure your Docker development environment.
+
+**Recommended Environment:**
 
 * Node.js 10
 * Yarn 1.7
+* PHP 7.0 (in case you are running WordPress locally)
 
 ## A note on Node versions used for the build tasks
 
@@ -20,19 +25,17 @@ run this command before building again. Otherwise you may experience errors on t
 $ yarn distclean
 ```
 
-**Start Development**
+### Start Development
 
 1. Make sure you have `git`, `node`, `npm`, and a working WordPress installation.
 2. Clone this repository inside your Plugins directory.
 
-	```
-	$ git clone https://github.com/Automattic/jetpack.git
+	```sh
+	$ git clone git@github.com:Automattic/jetpack.git
 	$ cd jetpack
 	```
 
-3. Install yarn
-
-Please, refer to yarn's [Installation Documentation](https://yarnpkg.com/docs/install/).
+3. Install yarn. Please, refer to yarn's [Installation Documentation](https://yarnpkg.com/docs/install/).
 
 4. Make sure the Jetpack plugin is active and run
 
@@ -148,7 +151,7 @@ $ yarn test-client -R 'my_reporter'
 We strongly recommend that you install tools to review your code in your IDE. It will make it easier for you to notice any missing documentation or coding standards you should respect. Most IDEs display warnings and notices inside the editor, making it even easier.
 
 - You can find [Code Sniffer rules for WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards#installation) here. Once you've installed these rulesets, you can [follow the instructions here](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards#how-to-use) to configure your IDE.
-- For JavaScript, we recommend installing ESLint. Most IDEs come with an ESLint plugin that you can use. Jetpack includes a `.eslintrc` file that defines our coding standards.
+- For JavaScript, we recommend installing ESLint. Most IDEs come with an ESLint plugin that you can use. Jetpack includes a `.eslintrc.js` file that defines our coding standards.
 
 ### Linting Jetpack's PHP
 
@@ -172,18 +175,18 @@ _There's also a handy `yarn php:lint` that will run `composer php:lint` if you p
 $ yarn php:lint
 ```
 
-### Checking Jetpack's PHP for PHP 5.2 Compatibility
+### Checking Jetpack's PHP for compatibility with different versions of PHP since 5.2
 
-We have a handy `composer` script that will just run the PHP CodeSniffer `PHPCompatibility` ruleset checking for code not compatible with PHP 5.2
+We have a handy `composer` script that will just run the PHP CodeSniffer `PHPCompatibilityWP` ruleset checking for code not compatible with PHP 5.2
 
 ```sh
-$ composer php:5.2-compatibility .
+$ composer php:compatibility .
 ```
 
-_There's also a handy `yarn php:5.2-compatibility` that will run `composer php:5.2-compatibility` if you prefer_.
+_There's also a handy `yarn php:compatibility` that will run `composer php:compatibility` if you prefer_.
 
 ```sh
-$ yarn php:5.2-compatibility .
+$ yarn php:compatibility .
 ```
 
 ### Linting Jetpack's JavaScript

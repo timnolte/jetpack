@@ -14,8 +14,51 @@ class Jetpack_Keyring_Service_Helper {
 		return self::$instance;
 	}
 
+	public static $SERVICES = array(
+		'facebook' => array(
+			'for' => 'publicize'
+		),
+		'twitter' => array(
+			'for' => 'publicize'
+		),
+		'linkedin' => array(
+			'for' => 'publicize'
+		),
+		'tumblr' => array(
+			'for' => 'publicize'
+		),
+		'path' => array(
+			'for' => 'publicize'
+		),
+		'google_plus' => array(
+			'for' => 'publicize'
+		),
+		'google_site_verification' => array(
+			'for' => 'other'
+		)
+	);
+
 	private function __construct() {
 		add_action( 'load-settings_page_sharing', array( __CLASS__, 'admin_page_load' ), 9 );
+	}
+
+	function get_services( $filter = 'all' ) {
+		$services = array(
+
+		);
+
+		if ( 'all' == $filter ) {
+			return $services;
+		} else {
+			$connected_services = array();
+			foreach ( $services as $service => $empty ) {
+				$connections = $this->get_connections( $service );
+				if ( $connections ) {
+					$connected_services[ $service ] = $connections;
+				}
+			}
+			return $connected_services;
+		}
 	}
 
 	/**
@@ -47,22 +90,23 @@ class Jetpack_Keyring_Service_Helper {
 		return $url;
 	}
 
-	static function connect_url( $service_name ) {
+	static function connect_url( $service_name, $for ) {
 		return add_query_arg( array(
 			'action'   => 'request',
 			'service'  => $service_name,
 			'kr_nonce' => wp_create_nonce( 'keyring-request' ),
 			'nonce'    => wp_create_nonce( "keyring-request-$service_name" ),
+			'for'      => $for,
 		), menu_page_url( 'sharing', false ) );
 	}
 
-	static function refresh_url( $service_name ) {
+	static function refresh_url( $service_name, $for ) {
 		return add_query_arg( array(
 			'action'   => 'request',
 			'service'  => $service_name,
 			'kr_nonce' => wp_create_nonce( 'keyring-request' ),
 			'refresh'  => 1,
-			'for'      => 'publicize',
+			'for'      => $for,
 			'nonce'    => wp_create_nonce( "keyring-request-$service_name" ),
 		), admin_url( 'options-general.php?page=sharing' ) );
 	}

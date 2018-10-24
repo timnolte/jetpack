@@ -115,17 +115,20 @@ class Jetpack_Debugger {
 		$debug_info .= "\r\n" . esc_html( "PLAN: " . self::what_jetpack_plan() );
 
 		$debug_info .= "\r\n";
+
+		$debug_info .= "\r\n" .  "-- SYNC Status -- ";
 		require_once JETPACK__PLUGIN_DIR . 'sync/class.jetpack-sync-modules.php';
 		$sync_module = Jetpack_Sync_Modules::get_module( 'full-sync' );
-		$sync_statuses = $sync_module->get_status();
-		$human_readable_sync_status = array();
-		foreach( $sync_statuses  as $sync_status => $sync_status_value ) {
-			$human_readable_sync_status[ $sync_status ] =
-				in_array( $sync_status, array( 'started', 'queue_finished', 'send_started', 'finished' ) )
-				? date( 'r', $sync_status_value ) : $sync_status_value ;
+		if ( $sync_module ) {
+			$sync_statuses = $sync_module->get_status();
+			$human_readable_sync_status = array();
+			foreach( $sync_statuses  as $sync_status => $sync_status_value ) {
+				$human_readable_sync_status[ $sync_status ] =
+					in_array( $sync_status, array( 'started', 'queue_finished', 'send_started', 'finished' ) )
+						? date( 'r', $sync_status_value ) : $sync_status_value ;
+			}
+			$debug_info .= "\r\n". sprintf( esc_html__( 'Jetpack Sync Full Status: `%1$s`', 'jetpack' ), print_r( $human_readable_sync_status, 1 ) );
 		}
-
-		$debug_info .= "\r\n". sprintf( esc_html__( 'Jetpack Sync Full Status: `%1$s`', 'jetpack' ), print_r( $human_readable_sync_status, 1 ) );
 
 		require_once JETPACK__PLUGIN_DIR. 'sync/class.jetpack-sync-sender.php';
 
@@ -217,7 +220,7 @@ class Jetpack_Debugger {
 
 		?>
 		<div class="wrap">
-			<h2><?php esc_html_e( 'Jetpack Debugging Center', 'jetpack' ); ?></h2>
+			<h2><?php esc_html_e( 'Debugging Center', 'jetpack' ); ?></h2>
 			<?php if ( isset( $can_disconnect ) && $can_disconnect ) : ?>
 				<div id="message" class="updated notice notice-success is-dismissible"><p><?php esc_html_e( 'This site was successfully disconnected.', 'jetpack' ) ?> <a href="<?php echo esc_url( Jetpack::admin_url() ); ?>"><?php esc_html_e( 'Go to connection screen.', 'jetpack' ); ?></a></p>
 					<button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php esc_html_e( 'Dismiss this notice.', 'jetpack' ); ?></span></button></div>
@@ -445,6 +448,8 @@ class Jetpack_Debugger {
 	}
 
 	public static function jetpack_debug_admin_head() {
+
+		Jetpack_Admin_Page::load_wrapper_styles();
 		?>
 		<style type="text/css">
 

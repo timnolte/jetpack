@@ -247,7 +247,23 @@ function JetpackRestApiClient( root, nonce ) {
 
 		fetchPluginsData: () => getRequest( `${ apiRoot }jetpack/v4/plugins`, getParams )
 			.then( checkStatus )
-			.then( parseJsonResponse )
+			.then( parseJsonResponse ),
+
+		fetchVerifySiteGoogleStatus: ( keyringId ) => {
+			const request = ( keyringId !== null )
+				? getRequest( `${ apiRoot }jetpack/v4/verify-site/google/${ keyringId }`, getParams )
+				: getRequest( `${ apiRoot }jetpack/v4/verify-site/google`, getParams );
+
+			return request
+				.then( checkStatus )
+				.then( parseJsonResponse );
+		},
+
+		verifySiteGoogle: ( keyringId ) => postRequest( `${ apiRoot }jetpack/v4/verify-site/google`, postParams, {
+			body: JSON.stringify( { keyring_id: keyringId } ),
+		} )
+		.then( checkStatus )
+		.then( parseJsonResponse )
 	};
 
 	function addCacheBuster( route ) {

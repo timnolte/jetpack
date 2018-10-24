@@ -19,6 +19,7 @@ import { ModuleSettingsForm as moduleSettingsForm } from 'components/module-sett
 import SettingsCard from 'components/settings-card';
 import SettingsGroup from 'components/settings-group';
 import JetpackBanner from 'components/jetpack-banner';
+import GoogleVerificationService from './verification-services/google';
 
 class VerificationServicesComponent extends React.Component {
 	static serviceIds = {
@@ -57,7 +58,7 @@ class VerificationServicesComponent extends React.Component {
 	getSiteVerificationValue( service ) {
 		const optionValue = this.props.getOptionValue( service );
 		// if current value is equal to the initial value, update format for display
-		if ( ! this.props.isDirty() ) {
+		if ( optionValue === this.props.getSettingCurrentValue( service ) ) {
 			return this.getMetaTag( service, optionValue );
 		}
 
@@ -147,18 +148,11 @@ class VerificationServicesComponent extends React.Component {
 						) }
 					</p>
 					<FormFieldset>
-						<FormLabel
-							className="jp-form-input-with-prefix"
-							key="verification_service_google">
-							<span>{ __( 'Google' ) }</span>
-							<TextInput
-								name="google"
-								value={ this.getSiteVerificationValue( 'google' ) }
-								placeholder={ this.getMetaTag( 'google', '1234' ) }
-								className="code"
-								disabled={ this.props.isUpdating( 'google' ) }
-								onChange={ this.props.onOptionChange } />
-						</FormLabel>
+						<GoogleVerificationService
+							value={ this.getSiteVerificationValue( 'google' ) }
+							placeholder={ this.getMetaTag( 'google', '1234' ) }
+							{ ...this.props }
+						/>
 						<FormLabel
 							className="jp-form-input-with-prefix"
 							key="verification_service_bing">

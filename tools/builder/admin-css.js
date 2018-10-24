@@ -16,7 +16,7 @@ const admincss = [
 	'modules/custom-post-types/comics/comics.css',
 	'modules/shortcodes/css/recipes.css',
 	'modules/shortcodes/css/recipes-print.css',
-
+	'modules/shortcodes/css/slideshow-shortcode.css',
 	'modules/after-the-deadline/atd.css',
 	'modules/after-the-deadline/tinymce/css/content.css',
 	'modules/contact-form/css/editor-inline-editing-style.css',
@@ -36,7 +36,9 @@ const admincss = [
 	'modules/videopress/css/videopress-editor-style.css',
 	'modules/widget-visibility/widget-conditions/widget-conditions.css',
 	'modules/widgets/gallery/css/admin.css',
-	'modules/sso/jetpack-sso-login.css' // Displayed when logging into the site.
+	'modules/sso/jetpack-sso-login.css', // Displayed when logging into the site.
+	'calypsoify/style-gutenberg.css',
+	'calypsoify/style.css'
 ];
 
 // Minimizes admin css for modules.  Outputs to same folder as min.css

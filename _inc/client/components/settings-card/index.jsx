@@ -193,7 +193,7 @@ export const SettingsCard = props => {
 				return (
 					<JetpackBanner
 						callToAction={ upgradeLabel }
-						title={ __( 'Faster, more relevant and more powerful sitewide search.' ) }
+						title={ __( 'Add faster, more advanced searching to your site with Jetpack Professional.' ) }
 						plan={ PLAN_JETPACK_BUSINESS }
 						feature={ feature }
 						onClick={ handleClickForTracking( feature ) }
@@ -262,13 +262,6 @@ export const SettingsCard = props => {
 
 				break;
 
-			case FEATURE_SEARCH_JETPACK:
-				if ( 'is-business-plan' !== planClass ) {
-					return false;
-				}
-
-				break;
-
 			case FEATURE_SPAM_AKISMET_PLUS:
 				if ( ( includes( [ 'is-free-plan' ], planClass ) || isEmpty( planClass ) ) && ! props.isAkismetKeyValid && ! props.isCheckingAkismetKey ) {
 					return false;
@@ -323,14 +316,14 @@ export const SettingsCard = props => {
 	}
 
 	return getModuleOverridenBanner() || (
-		<form className="jp-form-settings-card">
+		<form className="jp-form-settings-card" onSubmit={ ! isSaving && props.onSubmit } >
 			<SectionHeader label={ header }>
 				{
 					! props.hideButton && (
 						<Button
 							primary
 							compact
-							onClick={ isSaving ? () => {} : props.onSubmit }
+							type="submit"
 							disabled={ isSaving || ! props.isDirty() }>
 							{
 								isSaving
